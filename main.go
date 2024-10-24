@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/rishavmehra/gomeet/chat"
+	"github.com/rishavmehra/gomeet/server"
 )
 
 var addr = flag.String("addr", ":8080", "http service address")
@@ -25,6 +26,7 @@ func main() {
 	flag.Parse()
 	hub := chat.NewHub()
 	go hub.Run()
+	go server.Run()
 
 	http.HandleFunc("/", serverHome)
 	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
