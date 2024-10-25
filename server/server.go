@@ -3,12 +3,15 @@ package server
 import (
 	"log"
 	"os"
+	"time"
 
-	"github.com/gofiber/fiber"
+	"github.com/gofiber/contrib/websocket"
+	"github.com/gofiber/fiber/v2"
 	"github.com/joho/godotenv"
+	ctr "github.com/rishavmehra/gomeet/controllers"
 )
 
-func Run() {
+func Run() error {
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading .env file")
@@ -16,8 +19,15 @@ func Run() {
 	serverEndpoint := os.Getenv("SERVER_ENDPOINT")
 
 	app := fiber.New()
-	app.Get("/", func(c *fiber.Ctx) {
-		c.Send("Hello World")
-	})
-	app.Listen(serverEndpoint)
+	app.Get("/", ctr.Home)
+	app.Get("/room/create", ctr.RoomCreate)
+	app.Get("/room/:uuid", ctr.Room)
+
+	// (New) returns a new `handler func(*Conn)` that upgrades a client to the
+	// websocket protocol, you can pass an optional config.
+	app.Get("/room/:uuid/ws", websocket.New(ctr.RoomWebSocket, websocket.Config{
+		HandshakeTimeout: 12 * time.Second,
+	}))
+
+	return app.Listen(serverEndpoint)
 }
