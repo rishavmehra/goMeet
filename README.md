@@ -4,14 +4,14 @@
 ## 🎯 Implementation Checklist
 
 - [X] Chat app  
-    - http to ws
-    - register/unregister/broadcast
-    - read and write msg
-    - base static html
-- [ ] Basic Server Setup with Fiber & Template Engine
+    -[X] http to ws
+    -[X] register/unregister/broadcast
+    -[X] read and write msg
+    -[X] base static html
+- [X] Basic Server Setup with Fiber & Template Engine
 - [ ] Room Management System
-  - Create/Join rooms with UUID
-  - Room state handling
+  - [X]Create/Join rooms with UUID
+  - [ ]Room state handling
 - [ ] WebSocket Implementation
   - Room WebSocket
   - Chat WebSocket
@@ -40,4 +40,7 @@ Chat Flow:
 <br>
 
 ![alt text](image.png)
+
+
+![alt text](image-1.png)
 ---
