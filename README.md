@@ -9,25 +9,7 @@
     -[X] read and write msg
     -[X] base static html
 - [X] Basic Server Setup with Fiber & Template Engine
-- [ ] Room Management System
-  - [X]Create/Join rooms with UUID
-  - [ ]Room state handling
-- [ ] WebSocket Implementation
-  - Room WebSocket
-  - Chat WebSocket
-  - Viewer WebSocket
-- [ ] Streaming Capabilities
-  - Stream creation
-  - Stream WebSocket
-  - Stream chat integration
-- [ ] Real-time Communication
-  - WebRTC peer connections
-  - Key frame dispatch (interval timing need to decide)
-- [ ] Static Asset Serving
-- [ ] SSL/TLS Support for Secure Connections
-- [ ] Error Handling & Recovery System
-- [ ] Connection Pooling & Resource Management
-- [ ] API Documentation & Usage Guide
+- [X] WebRTC added(helper package)
 
 
 

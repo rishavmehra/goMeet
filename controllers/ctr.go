@@ -3,6 +3,7 @@ package ctr
 import (
 	"fmt"
 
+	"github.com/gofiber/contrib/websocket"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
 )
@@ -23,3 +24,12 @@ func Room(c *fiber.Ctx) error {
 		return nil
 	}
 }
+
+func RoomWebSocket(c *websocket.Conn) {
+	uuid := c.Params("uuid")
+	if uuid == "" {
+		return
+	}
+}
+
+func createOrGetRoom(uuid string) (string, string, *w.Room)
