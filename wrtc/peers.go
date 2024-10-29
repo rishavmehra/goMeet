@@ -45,6 +45,7 @@ func (p *Peers) AddRemoteTrackToLocal(t *webrtc.TrackRemote) *webrtc.TrackLocalS
 	p.ListLock.Lock()
 	defer func() {
 		p.ListLock.Unlock()
+		p.SignalPeerConnections()
 	}()
 
 	trackLocal, err := webrtc.NewTrackLocalStaticRTP(t.Codec().RTPCodecCapability, t.ID(), t.StreamID())
@@ -61,6 +62,7 @@ func (p *Peers) RemoveLocalTrack(t *webrtc.TrackRemote) {
 	p.ListLock.Lock()
 	defer func() {
 		p.ListLock.Unlock()
+		p.SignalPeerConnections()
 	}()
 	delete(p.TrackLocals, t.ID())
 }
