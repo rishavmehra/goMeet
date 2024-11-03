@@ -39,6 +39,10 @@ func (t *ThreadSafeWriter) WriteJSON(v interface{}) error {
 	return t.Conn.WriteJSON(v)
 }
 
+var Rooms map[string]*Room
+var Streams map[string]*Room
+var RoomsLock sync.RWMutex
+
 // facilitates adding a media track to the peer's internal state,
 // creating a local equivalent of a remote track to maintain a consistent media stream across peer connections.
 func (p *Peers) AddRemoteTrackToLocal(t *webrtc.TrackRemote) *webrtc.TrackLocalStaticRTP {
