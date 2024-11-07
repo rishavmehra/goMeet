@@ -10,6 +10,12 @@
     -[X] base static html
 - [X] Basic Server Setup with Fiber & Template Engine
 - [X] WebRTC added(helper package)
+- [X] Peer room Connection
+- [ ] Room Chat Connection
+- [ ] Stream Chat Connection
+- [ ] Frontend Setup
+    - [] Room
+    - .... other features
 
 ---
 ### Learning source:
