@@ -62,7 +62,7 @@ func (p *Peers) AddRemoteTrackToLocal(t *webrtc.TrackRemote) *webrtc.TrackLocalS
 }
 
 // basically removes the track
-func (p *Peers) RemoveLocalTrack(t *webrtc.TrackRemote) {
+func (p *Peers) RemoveLocalTrack(t *webrtc.TrackLocalStaticRTP) {
 	p.ListLock.Lock()
 	defer func() {
 		p.ListLock.Unlock()
