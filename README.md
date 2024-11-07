@@ -4,17 +4,17 @@
 ## 🎯 Implementation Checklist
 
 - [X] Chat app  
-    -[X] http to ws
-    -[X] register/unregister/broadcast
-    -[X] read and write msg
-    -[X] base static html
+    - [X] http to ws
+    - [X] register/unregister/broadcast
+    - [X] read and write msg
+    - [X] base static html
 - [X] Basic Server Setup with Fiber & Template Engine
 - [X] WebRTC added(helper package)
 - [X] Peer room Connection
 - [ ] Room Chat Connection
 - [ ] Stream Chat Connection
 - [ ] Frontend Setup
-    - [] Room
+    - [ ] Room
     - .... other features
 
 ---
