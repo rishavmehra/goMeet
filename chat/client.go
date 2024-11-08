@@ -109,3 +109,11 @@ func WsUpgrader(w http.ResponseWriter, r *http.Request, h *Hub) {
 	go client.writeMessages()
 	go client.readMessage()
 }
+
+func PeerChatConn(c *websocket.Conn, hub *Hub) {
+	client := &Client{hub: hub, conn: c, send: make(chan []byte)}
+	client.hub.register <- client
+
+	go client.writeMessages()
+	client.readMessage()
+}
