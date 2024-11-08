@@ -11,7 +11,8 @@
 - [X] Basic Server Setup with Fiber & Template Engine
 - [X] WebRTC added(helper package)
 - [X] Peer room Connection
-- [ ] Room Chat Connection
+- [ ] Peer Stream Connection (Similar to room connection but with some restrictions)
+- [X] Room Chat Connection
 - [ ] Stream Chat Connection
 - [ ] Frontend Setup
     - [ ] Room

@@ -28,10 +28,11 @@ func Run() error {
 	app.Get("/room/:uuid/ws", websocket.New(ctr.RoomWebSocket, websocket.Config{
 		HandshakeTimeout: 12 * time.Second,
 	}))
+	app.Get("/room/:uuid/chat", ctr.RoomChat)
+	app.Get("/room/:uuid/chat/ws", websocket.New(ctr.RoomChatWebsocket))
 	app.Get("/stream/:suuid", ctr.Stream)
 	app.Get("/stream/:suuid/ws", websocket.New(ctx.StreamWebSocket, websocket.Config{
 		HandshakeTimeout: 12 * time.Second,
 	}))
 	return app.Listen(serverEndpoint)
 }
-)
