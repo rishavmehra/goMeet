@@ -13,7 +13,7 @@
 - [X] Peer room Connection
 - [ ] Peer Stream Connection (Similar to room connection but with some restrictions)
 - [X] Room Chat Connection
-- [ ] Stream Chat Connection
+- [X] Stream Chat Connection
 - [ ] Frontend Setup
     - [ ] Room
     - .... other features
