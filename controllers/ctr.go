@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"sync"
+	"time"
 
 	"github.com/gofiber/contrib/websocket"
 	"github.com/gofiber/fiber/v2"
@@ -85,7 +86,6 @@ func createOrGetRoom(uuid string) (string, string, *wrtc.Room) {
 }
 
 func peerRoomConn(c *websocket.Conn, p *wrtc.Peers) {
-
 	// create new peerConnection
 	peerConnection, err := webrtc.NewPeerConnection(webrtc.Configuration{
 		ICEServers: []webrtc.ICEServer{
@@ -237,6 +237,38 @@ func peerRoomConn(c *websocket.Conn, p *wrtc.Peers) {
 		default:
 			log.Errorf("unknown message:", message)
 
+		}
+	}
+}
+
+func RoomViewertWebsocket(c *websocket.Conn) {
+	uuid := c.Params("uuid")
+	if uuid == "" {
+		return
+	}
+
+	wrtc.RoomsLock.Lock()
+	if peer, ok := wrtc.Rooms[uuid]; ok {
+		wrtc.RoomsLock.Unlock()
+		roomViwerConn(c, peer.Peers)
+		return
+	}
+	wrtc.RoomsLock.Unlock()
+}
+
+func roomViwerConn(c *websocket.Conn, p *wrtc.Peers) {
+	ticker := time.NewTicker(1 * time.Second)
+	defer ticker.Stop()
+	defer c.Close()
+
+	for {
+		select {
+		case <-ticker.C:
+			w, err := c.Conn.NextWriter(websocket.TextMessage)
+			if err != nil {
+				return
+			}
+			w.Write([]byte(fmt.Sprintf("%d", len(p.Connections))))
 		}
 	}
 }
